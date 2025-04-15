@@ -1,4 +1,4 @@
-import "./Homepage.css";
+import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 import { FaHome, FaUser, FaFilm, FaSearch, FaStar } from "react-icons/fa";
 import first from "../assets/images/first.jpg";
