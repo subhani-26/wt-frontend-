@@ -5,7 +5,8 @@
   font-family: "Poppins", sans-serif;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -23,33 +24,53 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ddd;
+  background-image: url("https://img.freepik.com/premium-vector/neon-cinema-logos_110464-44.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow: hidden;
   padding: 10px;
 }
-
-/* Signup Card */
+/* Signup Card - Fully Transparent with Blur */
 .signuppage-card {
   display: flex;
   width: 600px;
   max-height: 90vh;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.1); /* More transparency */
   border-radius: 8px;
   overflow: auto;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px); /* Increased blur effect */
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
 }
 
-/* Left Section */
+/* Left Section - Transparent Blue */
 .signuppage-left {
   width: 50%;
-  background: linear-gradient(135deg, #007bff, #3776f5);
+  background: rgba(1, 32, 73, 0.2); /* Transparent blue */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
   text-align: center;
+  padding: 20px;
+  border-radius: 8px 0 0 8px;
+}
+
+/* Right Section - Transparent White */
+.signuppage-right {
+  width: 55%;
+  background: rgba(53, 157, 206, 0.1); /* Transparent white */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  border-radius: 0 8px 8px 0;
 }
 
 .signuppage-welcome {
@@ -92,7 +113,7 @@ html, body {
 .signuppage-title {
   font-size: 1.5em;
   margin-bottom: 15px;
-  color: #333;
+  color: #fdfafa;
 }
 
 /* Form Styling */
@@ -231,11 +252,11 @@ html, body {
 }
 
 .signuppage-google-btn {
-  background-color: #DB4437;
+  background-color: #db4437;
 }
 
 .signuppage-facebook-btn {
-  background-color: #4267B2;
+  background-color: #4267b2;
 }
 
 .signuppage-google-btn:hover,
