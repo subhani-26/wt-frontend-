@@ -15,7 +15,7 @@ const Seating = () => {
 
   const fetchSeats = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/seats");
+      const response = await axios.get("https://wt-backend-eam1.onrender.com/seats");
       const updatedSeats = response.data;
   
       // Update bookedSeats to prevent re-selection
@@ -52,7 +52,7 @@ const Seating = () => {
     }
   
     try {
-      await axios.post("http://localhost:5000/book-seat", {
+      await axios.post("https://wt-backend-eam1.onrender.com/book-seat", {
         seats: selectedSeats.map((seat) => {
           const [section, row, col] = seat.split("-");
           return { section, row, col };

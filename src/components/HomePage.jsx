@@ -43,10 +43,10 @@ function Homepage() {
             <FaHome className="homepage-nav-icon" />
             <span className="homepage-nav-text">Home</span>
           </li>
-          <li className="homepage-nav-item" onClick={() => navigate("/Movies")}>
+          {/* <li className="homepage-nav-item" onClick={() => navigate("/Movies")}>
             <FaFilm className="homepage-nav-icon" />
             <span className="homepage-nav-text">Movies</span>
-          </li>
+          </li> */}
           <li className="homepage-nav-item" onClick={() => navigate('/ProfilePage')}>
             <FaUser className="homepage-nav-icon" />
             <span className="homepage-nav-text">Profile</span>
