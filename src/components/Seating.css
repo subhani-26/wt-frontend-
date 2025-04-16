@@ -195,3 +195,42 @@ button.bg-red-200 {
 button.bg-red-200:hover {
   background-color: #d32f2f; /* Slightly darker red for hover effect */
 }
+/* For Booked Seats (with red background) */
+/* For Booked Seats (with red background and blocked cursor) */
+button.bg-red-200 {
+  color: white; /* Ensure text color is visible */
+  background-color: #f44336; /* Red background for booked seats */
+  border-color: #f44336; /* Remove border for booked seats */
+  cursor: not-allowed; /* Prevent interaction */
+}
+
+button.bg-red-200:hover {
+  background-color: #d32f2f; /* Darker red on hover to indicate the seat is booked */
+}
+
+button.cursor-not-allowed {
+  cursor: not-allowed; /* Ensure the cursor stays disabled for booked seats */
+}
+/* For Booked Seats */
+button[disabled] {
+  background-color: #f90c1f;
+ 
+  cursor: not-allowed;
+}
+
+button {
+  /* Default button styles */
+  cursor: pointer;
+}
+/* Seating.css */
+
+.selected-seat {
+  background-color: green !important; /* Selected seats appear green */
+  color: white;
+}
+
+.booked-seat {
+  background-color: red !important; /* Booked seats appear red */
+  color: white;
+  cursor: not-allowed;
+}
