@@ -7,7 +7,7 @@
 
 body {
   margin: 0;
-  font-family: 'Lobster', cursive;
+  font-family: "Lobster", cursive;
   background-color: #000;
   height: 100vh;
   display: flex;
@@ -46,8 +46,8 @@ body {
   align-items: center;
   text-align: center;
   color: white;
-  background-color: rgba(0, 0, 0, 0.6); 
-  height:150px;
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 200px;
   padding-bottom: 50px;
   margin-bottom: 40px; /* Increased gap between heading and buttons */
 }
@@ -61,8 +61,7 @@ body {
   margin-bottom: 15px;
   animation: shine 2s infinite;
   font-family: Arial, sans-serif;
-  margin-top:50px;
- 
+  margin-top: 50px;
 }
 .landingpage-subtitle {
   margin-top: 0%;
@@ -120,12 +119,10 @@ body {
   background-color: rgb(15, 88, 27); /* Slightly lighter green on hover */
 }
 
-.landingpage-btn-signup:hover
-{
+.landingpage-btn-signup:hover {
   background: rgb(15, 88, 27);
 }
-.landingpage-btn-login:hover
-{
+.landingpage-btn-login:hover {
   background: #0099cc;
 }
 
