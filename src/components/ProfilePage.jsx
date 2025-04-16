@@ -1,38 +1,56 @@
-import React, { useEffect, useState } from 'react';
-import { FaUser,FaHistory } from 'react-icons/fa';
-import './ProfilePage.css';
+import React, { useEffect, useState } from "react";
+import { FaUser, FaHistory } from "react-icons/fa";
+import "./ProfilePage.css";
 
 function ProfilePage() {
-  // State to hold the user's booking history
-  const [bookingHistory, setBookingHistory] = useState(null);
-  
+  const [bookingHistory, setBookingHistory] = useState([]);
   const username = localStorage.getItem("username");
-  console.log("Username from localStorage: ", username);
 
-  // Fetch booking history from your backend or mock it
   useEffect(() => {
-    // Simulate fetching booking history (you can replace this with an API call)
-    setBookingHistory([]);  // Empty array means no bookings
+    const storedHistory =
+      JSON.parse(localStorage.getItem("bookingHistory")) || [];
+    setBookingHistory(storedHistory);
   }, []);
 
   return (
     <div className="profile-page">
       <div className="header">
         <FaUser className="profile-icon" />
-        <h2 className="profile-name">{username}</h2> {/* Display username from localStorage */}
+        <h2 className="profile-name">{username}</h2>
       </div>
-      <div className="history-box">
-      <FaHistory className="profile" />
-        <h3>Booking History</h3>
-        {/* Check if there are no bookings */}
-        {bookingHistory && bookingHistory.length === 0 ? (
-          <p>No bookings right now</p>
-        ) : (
-          <p>Displaying booking history...</p>  // Replace with actual booking history data if available
-        )}
-       
 
-      </div>
+      <h3 className="history-title">
+        <FaHistory className="profile-history-icon" /> Booking History
+      </h3>
+
+      {bookingHistory.length === 0 ? (
+        <p className="no-booking">No bookings right now</p>
+      ) : (
+        // ✅ No extra container wrapping cards
+        bookingHistory.map((booking, index) => (
+          <div key={index} className="booking-card">
+            <img
+              src={booking.image}
+              alt={booking.movie}
+              className="movie-image"
+            />
+            <h4>{booking.movie}</h4>
+            <p>
+              <strong>Date:</strong> {booking.date}
+            </p>
+            <p>
+              <strong>Time:</strong> {booking.time}
+            </p>
+            <p>
+              <strong>Theater:</strong> {booking.theaterName}
+            </p>
+            <p>
+              <strong>Booked On:</strong>{" "}
+              {new Date(booking.timestamp).toLocaleString()}
+            </p>
+          </div>
+        ))
+      )}
     </div>
   );
 }
