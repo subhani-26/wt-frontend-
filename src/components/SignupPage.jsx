@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
+import { auth, provider, signInWithPopup } from "../firebaseConfig";
 import "./SignupPage.css";
 
 const SignupPage = () => {
@@ -49,7 +50,7 @@ const SignupPage = () => {
     }
 
     try {
-      const response = await fetch("https://wt-backend-eam1.onrender.com/signup", {
+      const response = await fetch("http://localhost:5000/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -63,12 +64,28 @@ const SignupPage = () => {
         localStorage.setItem("username", data.username); // Store the username
         console.log("Saving username to localStorage:", data.username);
         alert("Signed up successfully!");
-        navigate("/HomePage"); 
+        navigate("/HomePage");
       } else {
         setError(data.error || "Signup failed. Please try again.");
       }
     } catch (err) {
       setError("An error occurred. Please try again.");
+    }
+  };
+  // 🔹 Google Sign-In Function
+  const handleGoogleSignIn = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      localStorage.setItem("username", user.displayName); // Store username
+      console.log("Saving Google username to localStorage:", user.displayName);
+
+      alert(`Welcome, ${user.displayName}!`);
+      navigate("/HomePage");
+    } catch (error) {
+      console.error("Google Sign-In Error:", error.message);
+      setError("Failed to sign in with Google.");
     }
   };
 
@@ -78,10 +95,14 @@ const SignupPage = () => {
         <div className="signuppage-left">
           <h2 className="signuppage-welcome">Come join us!</h2>
           <p className="signuppage-message">
-            We are so excited to have you here! If you haven't already, create an
-            account to get access to exclusive offers, rewards, and discounts.
+            We are so excited to have you here! If you haven't already, create
+            an account to get access to exclusive offers, rewards, and
+            discounts.
           </p>
-          <button className="signuppage-signin-btn" onClick={() => navigate("/LoginPage")}>
+          <button
+            className="signuppage-signin-btn"
+            onClick={() => navigate("/LoginPage")}
+          >
             Already have an account? Sign in.
           </button>
         </div>
@@ -129,10 +150,42 @@ const SignupPage = () => {
             <div className="signuppage-password-requirements">
               Password requirements:
               <ul>
-                <li className={passwordRequirements.length ? 'requirement-met' : 'requirement-not-met'}>At least 8 characters</li>
-                <li className={passwordRequirements.letters ? 'requirement-met' : 'requirement-not-met'}>Letters</li>
-                <li className={passwordRequirements.numbers ? 'requirement-met' : 'requirement-not-met'}>Numbers</li>
-                <li className={passwordRequirements.special ? 'requirement-met' : 'requirement-not-met'}>Special characters</li>
+                <li
+                  className={
+                    passwordRequirements.length
+                      ? "requirement-met"
+                      : "requirement-not-met"
+                  }
+                >
+                  At least 8 characters
+                </li>
+                <li
+                  className={
+                    passwordRequirements.letters
+                      ? "requirement-met"
+                      : "requirement-not-met"
+                  }
+                >
+                  Letters
+                </li>
+                <li
+                  className={
+                    passwordRequirements.numbers
+                      ? "requirement-met"
+                      : "requirement-not-met"
+                  }
+                >
+                  Numbers
+                </li>
+                <li
+                  className={
+                    passwordRequirements.special
+                      ? "requirement-met"
+                      : "requirement-not-met"
+                  }
+                >
+                  Special characters
+                </li>
               </ul>
             </div>
 
@@ -146,11 +199,12 @@ const SignupPage = () => {
           <div className="signuppage-divider">OR</div>
 
           <div className="signuppage-social">
-            <button className="signuppage-google-btn">
-              <FaGoogle className="signuppage-social-icon" /> Continue with Google
-            </button>
-            <button className="signuppage-facebook-btn">
-              <FaFacebook className="signuppage-social-icon" /> Continue with Facebook
+            <button
+              className="signuppage-google-btn"
+              onClick={handleGoogleSignIn}
+            >
+              <FaGoogle className="signuppage-social-icon" /> Continue with
+              Google
             </button>
           </div>
         </div>
