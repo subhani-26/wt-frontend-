@@ -1,104 +1,136 @@
-/* Full-screen Background */
-.loginpage-container {
+/* @import url("https://fonts.googleapis.com/css2?family=Sofia&display=swap"); */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lobster', cursive;
+  background-color: #000;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background: url("https://wallpapers.com/images/featured/neon-lights-aesthetic-nbmppc84kzjzdwfq.jpg")
-    no-repeat center center;
+  align-items: flex-start;
+  text-align: center;
+  padding-top: 50px;
+  overflow: hidden; /* Prevent scrolling on body */
+}
+
+/* Background image applied to landing page only */
+.landingpage-main {
+  width: 100vw; /* Ensure the width covers the entire viewport */
+  height: 100vh; /* Ensure the height covers the entire viewport */
+  background-image: url("../../images/landingimg.jpg");
   background-size: cover;
-  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed; /* Fix the position to prevent scrolling */
   top: 0;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "Sofia", cursive;
+  overflow: hidden; /* Prevent scrolling within the container */
 }
 
-/* Transparent White Card */
-.loginpage-card {
-  background: rgba(255, 255, 255, 0.2); /* White Transparent */
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  width: 350px;
+/* Title and description text */
+.landingpage-overlay-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content towards the top */
+  align-items: center;
   text-align: center;
-  backdrop-filter: blur(10px); /* Adds a blur effect */
-}
-
-/* Title */
-.loginpage-title {
-  color: black;
-  font-size: 28px;
-  margin-bottom: 15px;
-}
-
-/* Input Fields */
-.loginpage-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  background: rgba(255, 255, 255, 0.5);
-  color: black;
-}
-
-.loginpage-input::placeholder {
-  color: #555;
-}
-
-/* Login Button */
-.loginpage-submit-btn {
-  width: 100%;
-  background-color: green;
   color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.6); 
+  height:150px;
+  padding-bottom: 50px;
+  margin-bottom: 40px; /* Increased gap between heading and buttons */
 }
 
-.loginpage-submit-btn:hover {
-  background-color: #006400;
-}
-
-/* Divider */
-.loginpage-divider {
-  color: black;
-  margin: 15px 0;
-}
-
-/* Social Buttons */
-.loginpage-social button {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-}
-
-.loginpage-google-btn {
-  background-color: #db4437;
-  color: white;
-}
-
-.loginpage-facebook-btn {
-  background-color: #135ae7;
-  color: white;
-}
-
-/* Signup Text */
-.loginpage-signup-text {
-  color: rgb(252, 248, 248);
-  margin-top: 20px;
-  font-size: 16px;
-}
-
-.loginpage-signup-link {
-  color: rgb(243, 243, 250);
-  cursor: pointer;
+.landingpage-title {
+  font-size: 3rem;
+  color: #fff;
   font-weight: bold;
+  /* text-shadow: 0 0 10px rgba(0, 128, 255, 0.9),
+     0 0 20px rgba(0, 128, 255, 0.7);  */
+  margin-bottom: 15px;
+  animation: shine 2s infinite;
+  font-family: Arial, sans-serif;
+  margin-top:50px;
+ 
 }
+.landingpage-subtitle {
+  margin-top: 0%;
+  font-size: 2rem;
+}
+
+/* @keyframes shine {
+  0% {
+    text-shadow: 0 0 10px rgba(0, 128, 255, 0.9),
+      0 0 20px rgba(0, 128, 255, 0.7), 0 0 30px rgba(0, 128, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(0, 128, 255, 1), 0 0 30px rgba(0, 128, 255, 0.8),
+      0 0 40px rgba(0, 128, 255, 0.6);
+  }
+  100% {
+    text-shadow: 0 0 10px rgba(0, 128, 255, 0.9),
+      0 0 20px rgba(0, 128, 255, 0.7), 0 0 30px rgba(0, 128, 255, 0.5);
+  }
+} */
+
+/* Buttons container */
+.landingpage-buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px; /* Additional spacing above buttons */
+}
+
+/* Button styles */
+.landingpage-btn {
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  /* box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); */
+  border: none;
+}
+
+.landingpage-btn-login {
+  background: #00c3ff;
+  /* box-shadow: 0 0 20px #00c3ff; */
+}
+
+.landingpage-btn-signup {
+  background-color: rgb(31, 119, 44); /* Dark green color for signup button */
+  color: white;
+}
+
+.landingpage-btn-signup:hover {
+  background-color: rgb(15, 88, 27); /* Slightly lighter green on hover */
+}
+
+.landingpage-btn-signup:hover
+{
+  background: rgb(15, 88, 27);
+}
+.landingpage-btn-login:hover
+{
+  background: #0099cc;
+}
+
+/* .button:hover {
+  transform: scale(1.1);
+
+  
+} */

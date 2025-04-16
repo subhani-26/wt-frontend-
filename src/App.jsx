@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css"
 import { Routes, Route } from "react-router-dom"; // Use only Routes and Route
 import LandingPage from "./components/LandingPage";
 import LoginPage from "./components/LoginPage";
